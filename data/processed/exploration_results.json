@@ -9,5 +9,10 @@
   ],
   "exploration_date": "2025-05-31T22:16:22.668568",
   "target_species": "Biston betularia",
-  "target_gene": "COI"
+  "target_gene": "COI",
+  "uk_download_date": "2025-05-31T22:33:26.118239",
+  "uk_sequences_downloaded": 4,
+  "uk_sequences_failed": 0,
+  "uk_metadata_records": 4,
+  "uk_filtered_records": 0
 }
