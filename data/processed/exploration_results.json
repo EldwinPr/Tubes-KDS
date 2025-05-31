@@ -1,0 +1,13 @@
+{
+  "total_sequences_available": 327,
+  "sample_ids": [
+    "2698115618",
+    "2698115612",
+    "2698115326",
+    "2698114926",
+    "2698113950"
+  ],
+  "exploration_date": "2025-05-31T22:16:22.668568",
+  "target_species": "Biston betularia",
+  "target_gene": "COI"
+}
