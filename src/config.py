@@ -10,15 +10,15 @@ class Config:
     # Search Parameters
     TARGET_SPECIES = "Biston betularia"
     TARGET_GENE = "COI"
-    TARGET_LOCATION = "United Kingdom"
+    TARGET_LOCATION = None
     
-    # Data Limits
-    MAX_SEQUENCES_TEST = 20     # Untuk testing awal
-    MAX_SEQUENCES_FULL = 100    # Untuk full dataset
+    # Data Limits - INCREASED for better dataset
+    MAX_SEQUENCES_TEST = 100
+    MAX_SEQUENCES_FULL = 200
     
     # Sequence Quality Filters
-    MIN_SEQUENCE_LENGTH = 400   # Minimum COI sequence length
-    MAX_SEQUENCE_LENGTH = 800   # Maximum COI sequence length
+    MIN_SEQUENCE_LENGTH = 300   # Minimum COI sequence length
+    MAX_SEQUENCE_LENGTH = 1000   # Maximum COI sequence length
     
     # File Paths
     RAW_DATA_PATH = "data/raw/"
@@ -27,4 +27,4 @@ class Config:
     LOG_PATH = "logs/"
     
     # Haplotype Analysis
-    SIMILARITY_THRESHOLD = 0.97  # 97% similarity untuk grouping haplotypes
+    SIMILARITY_THRESHOLD = 0.98  # 95% similarity untuk grouping haplotypes

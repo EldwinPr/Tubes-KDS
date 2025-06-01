@@ -1,0 +1,109 @@
+{
+  "test_date": "2025-06-01T13:35:09.892454",
+  "total_tests": 44,
+  "total_passed": 44,
+  "total_failed": 0,
+  "success_rate": 100.0,
+  "status": "EXCELLENT",
+  "suite_results": {
+    "Utility Functions": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16,
+      "details": [
+        {
+          "test": "Valid normal sequence",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Valid long sequence",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Too short sequence",
+          "status": "PASS",
+          "result": false
+        },
+        {
+          "test": "Too long sequence",
+          "status": "PASS",
+          "result": false
+        },
+        {
+          "test": "Invalid characters",
+          "status": "PASS",
+          "result": false
+        },
+        {
+          "test": "Empty sequence",
+          "status": "PASS",
+          "result": false
+        },
+        {
+          "test": "High ambiguous content",
+          "status": "PASS",
+          "result": false
+        },
+        {
+          "test": "Basic sequence cleaning",
+          "status": "PASS",
+          "result": "ATGCGATCNNNN"
+        },
+        {
+          "test": "Remove invalid characters",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Empty sequence cleaning",
+          "status": "PASS",
+          "result": ""
+        },
+        {
+          "test": "Email configuration exists",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Sequence length limits are logical",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Similarity threshold is valid",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Target species is configured",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Save checkpoint creates file",
+          "status": "PASS",
+          "result": true
+        },
+        {
+          "test": "Load checkpoint returns data",
+          "status": "PASS",
+          "result": true
+        }
+      ]
+    },
+    "Data Pipeline": {
+      "passed": 18,
+      "failed": 0,
+      "total": 18,
+      "details": []
+    },
+    "Integration": {
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "details": []
+    }
+  }
+}

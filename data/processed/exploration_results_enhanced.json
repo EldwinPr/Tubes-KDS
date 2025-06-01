@@ -1,0 +1,16 @@
+{
+  "enhanced_global_search_date": "2025-06-01T13:20:43.996060",
+  "total_sequences_available": 327,
+  "sequences_downloaded": 100,
+  "sequences_failed": 0,
+  "enhanced_metadata_records": 100,
+  "high_quality_records": 100,
+  "target_species": "Biston betularia",
+  "target_gene": "COI",
+  "search_strategy": "enhanced_global_aggressive",
+  "length_range": "300-900bp",
+  "success_rate": 100.0,
+  "countries_represented": 1,
+  "mean_sequence_length": 632.92,
+  "mean_gc_content": 30.009300000000003
+}

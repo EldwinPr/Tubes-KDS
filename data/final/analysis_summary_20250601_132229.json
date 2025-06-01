@@ -1,0 +1,44 @@
+{
+  "processing_date": "2025-06-01T13:22:29.726628",
+  "input_sequences": 100,
+  "final_sequences": 68,
+  "retention_rate": 0.68,
+  "unique_sequences": 68,
+  "total_haplotypes": 68,
+  "haplotype_diversity": 1.0,
+  "mean_sequence_length": 624.1176470588235,
+  "mean_gc_content": 30.152883847070854,
+  "quality_control": {
+    "initial_sequences": 100,
+    "removed_duplicates": 32,
+    "removed_short": 0,
+    "removed_long": 0,
+    "removed_invalid_chars": 0,
+    "removed_high_ambiguous": 0,
+    "final_sequences": 68
+  },
+  "diversity_analysis": {
+    "total_sequences": 68,
+    "unique_sequences": 68,
+    "sequence_identity": 1.0,
+    "mean_length": 624.1176470588235,
+    "length_std": 69.47207001458015,
+    "min_length": 438,
+    "max_length": 684,
+    "mean_gc": 30.152883847070854,
+    "gc_std": 0.5034478577212315,
+    "min_gc": 28.899835796387517,
+    "max_gc": 31.851851851851855,
+    "a_percentage": 31.479736098020734,
+    "t_percentage": 38.35061262959472,
+    "g_percentage": 15.068331762488219,
+    "c_percentage": 15.098963242224317
+  },
+  "haplotype_analysis": {
+    "total_haplotypes": 68,
+    "most_common_haplotype": "Hap_001",
+    "most_common_frequency": 0.014705882352941176,
+    "singleton_haplotypes": 68,
+    "haplotype_diversity": 1.0
+  }
+}
