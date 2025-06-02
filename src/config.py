@@ -13,8 +13,8 @@ class Config:
     TARGET_LOCATION = None
     
     # Data Limits - INCREASED for better dataset
-    MAX_SEQUENCES_TEST = 100
-    MAX_SEQUENCES_FULL = 200
+    MAX_SEQUENCES_TEST = 300
+    MAX_SEQUENCES_FULL = 500
     
     # Sequence Quality Filters
     MIN_SEQUENCE_LENGTH = 300   # Minimum COI sequence length
