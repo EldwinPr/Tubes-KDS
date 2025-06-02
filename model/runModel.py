@@ -8,13 +8,21 @@ from MothAgent import MothAgent
 def main():
     # 1. Tentukan lokasi file Haplotype CSV
     #    Jika runModel.py berada di folder root TUBES-KDS/, maka path-nya:
-    haplo_csv_path = os.path.join("data", "final", "haplotype_summary_20250601_134633.csv")
-    
-    # 2. Muat data haplotype dengan pandas
-    try:
-        haplo_df = pd.read_csv(haplo_csv_path)
-    except FileNotFoundError:
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+
+    # Dari situ, naik satu level lalu masuk ke data/final/…
+    csv_name = "haplotype_summary_20250601_135634.csv"
+    haplo_csv_path = os.path.join(base_dir, csv_name)
+    haplo_csv_path = os.path.normpath(haplo_csv_path)
+
+    # 3. Cek keberadaan file
+    if not os.path.isfile(haplo_csv_path):
         raise FileNotFoundError(f"Tidak menemukan file haplotype CSV di: {haplo_csv_path}")
+    # 2. Muat data haplotype dengan pandas
+    haplo_df = pd.read_csv(haplo_csv_path)
+
+    # … lanjutkan kode seperti biasa …
+    print("CSV berhasil dimuat, jumlah baris:", len(haplo_df))
     
     # 3. Bentuk variabel haplotype_pool
     #    goal: haplotype_pool = { haplotype_id: { "sequence": ..., "frequency": ... }, ... }
