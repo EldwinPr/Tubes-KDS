@@ -45,8 +45,8 @@ def shannon_entropy(pop):
     return H
 
 
-generations = 20         
-mutation_rate = 0.15     
+generations = 50         
+mutation_rate = 0.1     
 
 results = []
 
@@ -78,7 +78,7 @@ for gen in range(generations):
     current_population = next_population
 
 results_df = pd.DataFrame(results)
-results_df.to_csv("diversity_simulation2_results.csv", index=False)
+results_df.to_csv("diversity_simulation_results.csv", index=False)
 
 print(results_df.head())
 
