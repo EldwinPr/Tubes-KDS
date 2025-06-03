@@ -41,16 +41,13 @@ def run_simulation(N_initial=500, mutation_rate=0.01, env_schedule=None, haplo_c
     )
 
     for step in range(len(env_schedule)):
-        print(f"[DEBUG] Step {step} mulai")
         model.step()
-        print(f"[DEBUG] Step {step} selesai, populasi: {len(model.agent_list)}")
 
     output_dir = "results"
     os.makedirs(output_dir, exist_ok=True)
     df = model.datacollector.get_model_vars_dataframe().reset_index()
     output_path = os.path.join(output_dir, "simulation_output.csv")
     df.to_csv(output_path, index=False)
-    print(f"Simulasi selesai. Hasil disimpan di: {output_path}")
     
     return df
 
