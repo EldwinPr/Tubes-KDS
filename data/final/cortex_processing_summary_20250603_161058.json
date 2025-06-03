@@ -1,0 +1,10 @@
+{
+  "processing_date": "2025-06-03T16:10:58.615847",
+  "gene_type": "cortex",
+  "target_species": "Biston betularia",
+  "sequences_found": 1,
+  "sequences_processed": 1,
+  "unique_haplotypes": 1,
+  "mean_sequence_length": 377523.0,
+  "mean_gc_content": 36.42
+}
