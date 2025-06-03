@@ -1,74 +1,70 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from model import runModel
+from model import newModel
 import traceback
 
 st.set_page_config(
-    page_title="Simulasi Evolusi Ngengat",
+    page_title="Simulasi Keanekaragaman Genetik Populasi Ngengat",
     layout="wide",
-    page_icon="🦋"
+    page_icon="🧬"
 )
 
-st.title("🦋 Simulasi Evolusi Ngengat Berbasis Agen")
+st.title("🧬 Simulasi Keanekaragaman Genetik Populasi Ngengat")
 
-st.sidebar.header("🔧 Parameter Simulasi")
+st.sidebar.header("🔧 Parameter Simulasi Diversity")
 generations = st.sidebar.slider("Jumlah Generasi", 10, 200, 50, step=10)
-pollution_level = st.sidebar.slider("Tingkat Polusi (0.0 - 1.0)", 0.0, 1.0, 0.5, step=0.05)
-mutation_rate = st.sidebar.slider("Tingkat Mutasi", 0.0, 0.1, 0.01, step=0.005)
+mutation_rate = st.sidebar.slider("Tingkat Mutasi", 0.0, 0.5, 0.1, step=0.01)
 
-if "simulasi_dijalankan" not in st.session_state:
-    st.session_state["simulasi_dijalankan"] = False
-if "simulasi_trigger" not in st.session_state:
-    st.session_state["simulasi_trigger"] = False
+if "diversity_simulasi_dijalankan" not in st.session_state:
+    st.session_state["diversity_simulasi_dijalankan"] = False
+if "diversity_simulasi_trigger" not in st.session_state:
+    st.session_state["diversity_simulasi_trigger"] = False
 
-if st.sidebar.button("▶️ Jalankan Simulasi"):
-    st.session_state["simulasi_trigger"] = True
+if st.sidebar.button("▶️ Jalankan Simulasi Diversity"):
+    st.session_state["diversity_simulasi_trigger"] = True
 
-if st.session_state["simulasi_trigger"]:
-    st.session_state["simulasi_trigger"] = False
+if st.session_state["diversity_simulasi_trigger"]:
+    st.session_state["diversity_simulasi_trigger"] = False
 
     try:
-        st.session_state["simulasi_dijalankan"] = True
+        st.session_state["diversity_simulasi_dijalankan"] = True
         st.info("⏳ Menjalankan simulasi...")
 
-        env_schedule = [pollution_level] * generations
-
-        df = runModel.run_simulation(
-            N_initial=500,
-            mutation_rate=mutation_rate,
-            env_schedule=env_schedule
+        df = newModel.run_diversity_simulation(
+            generations=generations,
+            mutation_rate=mutation_rate
         )
 
-        df = df.reset_index().rename(columns={"index": "Generation"})
-        st.session_state["simu_df"] = df
+        st.session_state["diversity_df"] = df
 
         st.success("✅ Simulasi selesai!")
 
     except Exception as e:
-        st.session_state["simulasi_dijalankan"] = False
+        st.session_state["diversity_simulasi_dijalankan"] = False
         st.error("❌ Terjadi error saat simulasi.")
         st.code(traceback.format_exc())
 
-if not st.session_state["simulasi_dijalankan"]:
-    st.info("📢 Belum ada simulasi yang dijalankan.")
+if not st.session_state["diversity_simulasi_dijalankan"]:
+    st.info("📢 Belum ada simulasi diversity yang dijalankan.")
     st.markdown("""
-    Silakan atur parameter di sidebar, lalu tekan tombol **"▶️ Jalankan Simulasi"**  
-    untuk melihat bagaimana populasi ngengat berevolusi terhadap tekanan lingkungan dan mutasi genetik.
-    
+    Silakan atur parameter di sidebar, lalu tekan tombol **"▶️ Jalankan Simulasi Diversity"**  
+    untuk melihat bagaimana keanekaragaman genetik populasi ngengat berubah akibat mutasi antar generasi.
+
     🔧 Parameter yang dapat diatur:
     - Jumlah generasi
-    - Tingkat polusi lingkungan
-    - Peluang mutasi genetik
+    - Peluang mutasi haplotype
 
-    📊 Setelah simulasi selesai, akan ditampilkan grafik, data, dan tombol ekspor hasil.
+    📊 Setelah simulasi selesai, akan ditampilkan grafik diversity dan data mentah hasil simulasi.
     """)
 
-if st.session_state.get("simu_df") is not None:
-    df = st.session_state["simu_df"]
+if st.session_state.get("diversity_df") is not None:
+    df = st.session_state["diversity_df"]
 
-    st.subheader("📊 Hasil Simulasi")
-    selected_metric = st.selectbox("Pilih metrik", df.columns[1:], key="metric_selector")
+    st.subheader("📊 Hasil Simulasi Diversity")
+    selected_metric = st.selectbox(
+        "Pilih metrik", ["Haplotype_Diversity", "Shannon_Index"], key="diversity_metric_selector"
+    )
 
     fig, ax = plt.subplots(figsize=(4, 2))
     ax.plot(df["Generation"], df[selected_metric], marker='o')
@@ -83,4 +79,4 @@ if st.session_state.get("simu_df") is not None:
     st.dataframe(df)
 
     csv = df.to_csv(index=False).encode("utf-8")
-    st.download_button("📥 Unduh Hasil CSV", csv, file_name="hasil_simulasi.csv", mime="text/csv")
+    st.download_button("📥 Unduh Hasil CSV", csv, file_name="diversity_simulation.csv", mime="text/csv")

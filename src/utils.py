@@ -40,22 +40,19 @@ def validate_sequence(sequence, min_length=400, max_length=800):
     if not sequence:
         return False
     
-    # Check length
     if len(sequence) < min_length or len(sequence) > max_length:
         return False
     
-    # Check for valid nucleotides (allow ATGCN and ambiguous codes)
     valid_chars = set('ATGCNRYSWKMBDHV')
     sequence_chars = set(sequence.upper())
     
     if not sequence_chars.issubset(valid_chars):
         return False
     
-    # Check for too many N's or ambiguous characters
     ambiguous_count = sum(1 for char in sequence.upper() if char in 'NRYSWKMBDHV')
     ambiguous_percentage = ambiguous_count / len(sequence)
     
-    if ambiguous_percentage > 0.1:  # More than 10% ambiguous
+    if ambiguous_percentage > 0.1:
         return False
     
     return True
@@ -73,10 +70,8 @@ def clean_sequence(sequence):
     if not sequence:
         return ""
     
-    # Remove whitespace and convert to uppercase
     cleaned = ''.join(sequence.split()).upper()
     
-    # Remove any non-DNA characters except standard ambiguous codes
     valid_chars = 'ATGCNRYSWKMBDHV'
     cleaned = ''.join(char for char in cleaned if char in valid_chars)
     
@@ -97,7 +92,6 @@ def save_checkpoint(data, filename, description=""):
         if isinstance(data, pd.DataFrame):
             data.to_csv(filename, index=False)
         else:
-            # For other data types, use pickle
             import pickle
             with open(filename, 'wb') as f:
                 pickle.dump(data, f)
@@ -131,17 +125,16 @@ def load_checkpoint(filename):
         logger.error(f"Error loading checkpoint {filename}: {e}")
         return None
 
-# Test function
 def test_utils():
     """
     Test utility functions
     """
-    # Test sequence validation
+    
     test_sequences = [
-        "ATGCGATCGATCGATCG" * 25,  # Valid sequence
-        "ATGC" * 10,  # Too short
-        "ATGCXYZ" * 50,  # Invalid characters
-        "NNNNNNNNNN" * 50,  # Too many N's
+        "ATGCGATCGATCGATCG" * 25,
+        "ATGC" * 10,
+        "ATGCXYZ" * 50,
+        "NNNNNNNNNN" * 50,
     ]
     
     print("Testing sequence validation:")
@@ -149,7 +142,6 @@ def test_utils():
         is_valid = validate_sequence(seq)
         print(f"Sequence {i+1}: {'Valid' if is_valid else 'Invalid'}")
     
-    # Test sequence cleaning
     dirty_sequence = "  atgc gatc  NNNN xyz  "
     cleaned = clean_sequence(dirty_sequence)
     print(f"\nCleaning test:")
