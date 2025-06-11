@@ -4,7 +4,7 @@ class Config:
     """
     
     # NCBI Settings
-    NCBI_EMAIL = "18222042@std.stei.itb.ac.id"
+    NCBI_EMAIL = "email@email.com" # Ganti dengan email Anda
     NCBI_DATABASE = "nucleotide"
     
     # Search Parameters
